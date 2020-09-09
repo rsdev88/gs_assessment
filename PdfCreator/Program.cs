@@ -17,6 +17,7 @@ namespace PdfCreator
             var services = new ServiceCollection();
             services.AddSingleton(configuration);
             services.AddTransient<PdfCreator>();
+            services.AddTransient<IFileReader, FileReader>();
 
             var serviceProvider = services.BuildServiceProvider();
             var scope = serviceProvider.CreateScope();

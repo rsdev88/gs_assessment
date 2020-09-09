@@ -7,18 +7,19 @@ namespace PdfCreator
 {
     public class PdfCreator
     {
-        private readonly IConfiguration configuration;
-        private const string inputFileSettingName = "inputFilePath";
+        private readonly IFileReader fileReader;
 
-        public PdfCreator(IConfiguration configuration)
+        public PdfCreator(IFileReader fileReader)
         {
-            this.configuration = configuration;
+            this.fileReader = fileReader;
         }
 
         public void Run()
         {
-            var inputFilePath = this.configuration.GetValue<string>(inputFileSettingName);
-            var inputArray = System.IO.File.ReadAllLines(inputFilePath);
+            //Obtain a queue of inputs
+            this.fileReader.ReadInput();
+
+            //Pass queue to implementation of PDF generator
 
         }
         
