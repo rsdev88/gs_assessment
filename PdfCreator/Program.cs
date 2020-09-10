@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using PdfCreator.InputMappers;
 using PdfCreator.FileReaders;
+using PdfCreator.PdfGenerators;
 
 namespace PdfCreator
 {
@@ -21,6 +22,7 @@ namespace PdfCreator
             services.AddTransient<PdfCreator>();
             services.AddTransient<IFileReader, FileReader>();
             services.AddTransient<IMapper, InputMapper>();
+            services.AddTransient<IPdfGenerator, PdfGenerator>();
 
             var serviceProvider = services.BuildServiceProvider();
             var scope = serviceProvider.CreateScope();

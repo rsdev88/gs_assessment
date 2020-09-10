@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PdfCreator.PdfGenerators;
+using System;
 
 namespace PdfCreator.Commands
 {
@@ -20,7 +21,7 @@ namespace PdfCreator.Commands
             }
         }
 
-        public void Process()
+        public void Process(ref CurrentPdf currentPdf)
         {
             throw new NotImplementedException();
         }

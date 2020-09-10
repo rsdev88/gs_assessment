@@ -1,22 +1,20 @@
-﻿using System;
+﻿using PdfCreator.PdfGenerators;
+using System;
 
 namespace PdfCreator.Commands
 {
     public class Text : ICommand
     {
-        private readonly string value;
-        public string Value { get { return this.value; } }
+        public string Value { get; }
 
         public Text(string value = "")
         {
-            this.value = value;
+            this.Value = value;
         }
 
-        public void Process()
+        public void Process(ref CurrentPdf currentPdf)
         {
-            throw new NotImplementedException();
+            currentPdf.StringBuilder.Append(this.Value + " ");
         }
-
-
     }
 }

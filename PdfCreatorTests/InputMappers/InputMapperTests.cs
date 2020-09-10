@@ -7,6 +7,7 @@ using System.Text;
 
 namespace PdfCreatorTests.InputMappers
 {
+    [TestFixture]
     public class InputMapperTests
     {
 
