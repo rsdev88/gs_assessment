@@ -1,25 +1,27 @@
 ﻿using Microsoft.Extensions.Configuration;
 using PdfCreator.Commands;
+using PdfCreator.InputMappers;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace PdfCreator
+namespace PdfCreator.FileReaders
 {
     public class FileReader : IFileReader
     {
         private readonly IConfiguration configuration;
+        private readonly IMapper inputMapper;
 
-        public FileReader(IConfiguration configuration)
+        public FileReader(IConfiguration configuration, IMapper inputMapper)
         {
             this.configuration = configuration;
+            this.inputMapper = inputMapper;
         }
 
-        public List<ICommand> ReadInput()
+        public Queue<ICommand> ReadInput()
         {
             var inputFilePath = this.configuration.GetValue<string>(Constants.INPUT_FILE_NAME_SETTING);
 
-            //Look for the file and read its contents - this will throw an error if the file is not found.
+            //Look for the file and read its contents - this will throw an FileNotFound exception if the file is not found.
             var inputArray = System.IO.File.ReadAllLines(inputFilePath);
 
             //Check to see if the file contained no contents.
@@ -28,8 +30,7 @@ namespace PdfCreator
                 throw new FormatException(string.Format(Constants.EMPTY_INPUT_ERROR, inputFilePath));
             }
 
-            //Map the input to a list of commands.
-            return new List<ICommand>();
+            return this.inputMapper.MapInputFromArray(inputArray);
         }
         
     }

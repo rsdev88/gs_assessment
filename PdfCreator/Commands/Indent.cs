@@ -5,10 +5,19 @@ namespace PdfCreator.Commands
     public class Indent : ICommand
     {
         private readonly int indentation;
+        public int Indentation { get { return this.indentation; } }
 
-        public Indent(int indentation = 0)
+        public Indent(string value = "")
         {
-            this.indentation = indentation;
+            if (!string.IsNullOrEmpty(value))
+            {
+                value = value.Replace(Constants.INDENTATION_COMMAND_NAME, "").Trim();
+
+                if (! int.TryParse(value, out indentation))
+                {
+                    this.indentation = 0;
+                }
+            }
         }
 
         public void Process()

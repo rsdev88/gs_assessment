@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using PdfCreator.InputMappers;
+using PdfCreator.FileReaders;
 
 namespace PdfCreator
 {
@@ -18,6 +20,7 @@ namespace PdfCreator
             services.AddSingleton(configuration);
             services.AddTransient<PdfCreator>();
             services.AddTransient<IFileReader, FileReader>();
+            services.AddTransient<IMapper, InputMapper>();
 
             var serviceProvider = services.BuildServiceProvider();
             var scope = serviceProvider.CreateScope();

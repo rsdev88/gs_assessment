@@ -2,7 +2,7 @@
 
 namespace PdfCreator.Commands
 {
-    class Normal : ICommand
+    public class Normal : ICommand
     {
         public void Process()
         {

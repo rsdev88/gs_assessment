@@ -2,7 +2,7 @@
 
 namespace PdfCreator.Commands
 {
-    public class Italic : ICommand
+    public class Italics : ICommand
     {
         public void Process()
         {
