@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using PdfCreator.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,7 +15,7 @@ namespace PdfCreator
             this.configuration = configuration;
         }
 
-        public void ReadInput()
+        public List<ICommand> ReadInput()
         {
             var inputFilePath = this.configuration.GetValue<string>(Constants.INPUT_FILE_NAME_SETTING);
 
@@ -28,6 +29,7 @@ namespace PdfCreator
             }
 
             //Map the input to a list of commands.
+            return new List<ICommand>();
         }
         
     }

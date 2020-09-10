@@ -17,7 +17,7 @@ namespace PdfCreator
         public void Run()
         {
             //Obtain a queue of inputs
-            this.fileReader.ReadInput();
+            var commandList = this.fileReader.ReadInput();
 
             //Pass queue to implementation of PDF generator
 

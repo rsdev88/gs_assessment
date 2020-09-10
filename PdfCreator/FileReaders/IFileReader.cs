@@ -1,11 +1,10 @@
-﻿using System;
+﻿using PdfCreator.Commands;
 using System.Collections.Generic;
-using System.Text;
 
 namespace PdfCreator
 {
     public interface IFileReader
     {
-        void ReadInput();
+        List<ICommand> ReadInput();
     }
 }
