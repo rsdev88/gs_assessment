@@ -1,0 +1,26 @@
+﻿using PdfCreator.FileReaders;
+
+namespace PdfCreator
+{
+    public class PdfCreator
+    {
+        private readonly IFileReader fileReader;
+
+        public PdfCreator(IFileReader fileReader)
+        {
+            this.fileReader = fileReader;
+        }
+
+        public void Run()
+        {
+            //Obtain a queue of inputs
+            var commandList = this.fileReader.ReadInput();
+
+            //Pass queue to implementation of PDF generator
+
+        }
+        
+
+
+    }
+}
